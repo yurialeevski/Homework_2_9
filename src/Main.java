@@ -197,7 +197,39 @@ public class Main {
         System.out.println("Вывод в консоль множества mechanicSet.");
         System.out.println("В множестве не должно быть повторов");
         System.out.println(mechanicSet);
+        System.out.println("\nДополнение к ДЗ HashSet: Вывод водителей в консоль с помощью итератора");
+        Iterator<Mechanic> mechanicIterator = mechanicSet.iterator();
+        while(mechanicIterator.hasNext()) {
+            System.out.print(mechanicIterator.next());
+        }
         System.out.println();
+
+        System.out.println("\nДомашнее задание: HashMap");
+        Map<String, List<Mechanic>> transportHashMap = new HashMap<>();
+        transportHashMap.put(qashkai.getBrand(), qashkai.getMechanics());
+        transportHashMap.put(bmw.getBrand(), bmw.getMechanics());
+        transportHashMap.put(volvo.getBrand(), volvo.getMechanics());
+        transportHashMap.put(renault.getBrand(), renault.getMechanics());
+        System.out.println("Объект автобус maz добавлен в HashMap с разными ключами");
+        transportHashMap.put(maz.getBrand(), maz.getMechanics());
+        transportHashMap.put(maz.getBrand() + maz.getModel(), maz.getMechanics());
+        System.out.println("Раздельный вывод ключей(тр. средства) и значений(список механиков)");
+        System.out.println("Вывод всех ключей:");
+        for(String transport: transportHashMap.keySet()) {
+            System.out.println("В мапе есть транспортное средство: " + transport);
+        }
+        System.out.println("Вывод всех значений:");
+        for(List<Mechanic> transportList: transportHashMap.values()) {
+            System.out.println("Список механиков: " + transportList);
+        }
+        System.out.println();
+        System.out.println("Вывод в консоль пар ключ-значение");
+        for(Map.Entry<String, List<Mechanic>> transportMechanicHashMap: transportHashMap.entrySet()) {
+            System.out.println("\nКлюч - транспорт: " + transportMechanicHashMap.getKey() + " ---> " +
+                    "Значение - список механиков: " + transportMechanicHashMap.getValue());
+        }
+        System.out.println();
+
     }
     public static void printInformation(Driver driver, Transport transport) {
         System.out.println("Водитель " + driver.getFullName() +
